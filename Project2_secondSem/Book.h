@@ -4,14 +4,14 @@
 class Book
 {
 private:
-	std::string Author::name;
+	Author myAuthor;
 	std::string title;
 	int pages;
 	double price;
 public:
 	Book();
-	Book(std::string, std::string, int, double);
-	std::string getName();
+	Book(Author, std::string, int, double);
+	Author getAuthor();
 	std::string getTitle();
 	int getPages();
 	double getPrice();

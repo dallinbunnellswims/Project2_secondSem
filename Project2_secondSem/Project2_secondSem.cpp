@@ -1,8 +1,10 @@
 // Project2_secondSem.cpp : Defines the entry point for the console application.
 //Classes for Book and Author
 
+#include "stdafx.h"
 #include "including.h"
 #include "driver.h"
+
 
 int main()
 {
@@ -29,13 +31,20 @@ int main()
 	displayBooks(myBooks);
 	std::cout << "\n\n";
 
-	system("PAUSE");
 	return 0;
 }
 
-void displayBooks(const std::vector<Book>& books)
+void displayBooks(std::vector<Book>& books)
 {
-	// students need to write the code for this function
+	for (unsigned int i = 0; i < books.size(); i++)
+	{
+		std::cout << books[i].getTitle() << std::endl;
+		std::cout << books[i].getAuthor().getName() << std::endl;
+		std::cout << books[i].getAuthor().getAddress() << std::endl;
+		std::cout << books[i].getPages() << std::endl;
+		std::cout << books[i].getPrice() << "\n" << std::endl;
+	}
+	
 }
 
 

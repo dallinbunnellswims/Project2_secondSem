@@ -1,5 +1,7 @@
+#include "stdafx.h"
 #include "including.h"
 #include "Author.h"
+
 
 Author::Author()
 {

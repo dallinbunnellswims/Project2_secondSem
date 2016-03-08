@@ -1,22 +1,25 @@
+#include "stdafx.h"
 #include "including.h"
 #include "Book.h"
+
 
 Book::Book()
 {
 }
 
-Book::Book(std::string s1, std::string s2, int i1, double d1)
+Book::Book(Author bookAuthor, std::string s2, int i1, double d1)
 {
-	name = s1;
+	myAuthor = bookAuthor;
 	title = s2;
 	pages = i1;
 	price = d1;
 }
 
-std::string Book::getName() 
+Author Book::getAuthor()
 {
-	return name;
+	return myAuthor;
 }
+
 std::string Book::getTitle()
 {
 	return title;
