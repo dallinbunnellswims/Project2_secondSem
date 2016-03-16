@@ -10,7 +10,7 @@ public:
 	Author(std::string, std::string);
 	std::string getName();
 	std::string getAddress();
-	void readData(std::ifstream&);
+	bool readData(std::ifstream&);
 	void writeData(std::ofstream&);
 	~Author();
 };

@@ -32,6 +32,11 @@ double Book::getPrice()
 {
 	return price;
 }
+void Book::writeData(std::ofstream& outStream)
+{
+	//not working. WHY!!! error no operator << matches the operands
+	outStream << myAuthor << ' ' << title << ' ' << pages << ' ' << price;
+}
 Book::~Book()
 {
 }

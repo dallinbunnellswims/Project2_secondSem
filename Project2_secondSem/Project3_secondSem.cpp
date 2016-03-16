@@ -1,16 +1,76 @@
-// Project2_secondSem.cpp : Defines the entry point for the console application.
-//Classes for Book and Author
-
+// CS 1410 Programming Project #3
+// Copyright 2014, Utah Valley University
+//Author: Roger deBry
+// Date last modified: October 2015
+// Implementation file for main
+// =======================================
 #include "stdafx.h"
 #include "including.h"
 #include "driver.h"
-
+#include "Book.h"
+using namespace std;
 
 int main()
 {
+	// Display Menu 
+	int option = 0;
+	const int CREATE = 1;
+	const int READ = 2;
 
+	cout << "\nCS 1410 Project 3";
+	cout << "\nSelect one of the following two options: ";
+	cout << "\n   1 - create a test file";
+	cout << "\n   2 - read the test file and display the results";
+	cout << "\n>> ";
+
+	// run the selected option
+	cin >> option;
+	if (option == CREATE)
+	{
+		createTestFile();
+		cout << "\nTest file has been created.";
+	}
+	else if (option == READ)
+	{
+		readTestFile();
+	}
+	else
+	{
+		cout << "\nInvalid option.";
+	}
+
+	system("PAUSE");
+	return 0;
+}
+
+void displayBooks(vector<Book> &books)
+{
+	// set up cout to display currency
+	cout.setf(ios::fixed);
+	cout.setf(ios::showpoint);
+	cout.precision(2);
+
+	// display heading
+	cout << "\nRecommended Reading List\n";
+
+
+	// display each account
+	for (unsigned i = 0; i < books.size(); i++)
+	{
+		Author p = books[i].getAuthor();
+		cout << books[i].getTitle() << '\n';
+		cout << p.getName() << '\n';
+		cout << p.getAddress() << '\n';
+		cout << books[i].getPages() << " pages\n";
+		cout << '$' << books[i].getPrice() << "\n\n\n";
+	}
+}
+
+// This code is provided for you. It creates the test file.
+void createTestFile()
+{
 	// create a vector for storing the account objects
-	std::vector<Book> myBooks;
+	vector<Book> myBooks;
 
 	// create three Author objects
 	Author p1("J.K.Rowling", "Edinburgh, Scotland");
@@ -27,25 +87,24 @@ int main()
 	myBooks.push_back(b2);
 	myBooks.push_back(b3);
 
-	// call the displayBooks function to display the books
-	displayBooks(myBooks);
-	std::cout << "\n\n";
+	// write the books to a file
+	// the file will be in the same folder as the executable file
+	// assume that the file opens
+	ofstream outputFile;
+	outputFile.open("bookData.txt");
 
-	return 0;
-}
-
-void displayBooks(std::vector<Book>& books)
-{
-	for (unsigned int i = 0; i < books.size(); i++)
+	for (unsigned i = 0; i < myBooks.size(); ++i)
 	{
-		std::cout << books[i].getTitle() << std::endl;
-		std::cout << books[i].getAuthor().getName() << std::endl;
-		std::cout << books[i].getAuthor().getAddress() << std::endl;
-		std::cout << books[i].getPages() << std::endl;
-		std::cout << books[i].getPrice() << "\n" << std::endl;
+		myBooks[i].writeData(outputFile);
 	}
-	
 }
 
+void readTestFile()
+{
+	// This is code that you must provide
+}
 
-
+void openFile(ifstream& in, const string& _name)
+{
+	// This is code that you must provide
+}

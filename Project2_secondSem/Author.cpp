@@ -15,6 +15,10 @@ std::string Author::getAddress()
 {
 	return address;
 }
+bool Author::readData(std::ifstream& inStream)
+{
+	inStream
+}
 std::string Author::getName()
 {
 	return name;
