@@ -155,7 +155,7 @@
   <ItemGroup>
     <ClCompile Include="Author.cpp" />
     <ClCompile Include="Book.cpp" />
-    <ClCompile Include="Project2_secondSem.cpp" />
+    <ClCompile Include="Project3_secondSem.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>

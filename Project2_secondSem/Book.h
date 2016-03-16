@@ -15,6 +15,8 @@ public:
 	std::string getTitle();
 	int getPages();
 	double getPrice();
+	void readData(std::ifstream&);
+	void writeData(std::ofstream&);
 	~Book();
 };
 
