@@ -8,6 +8,7 @@
 #include "including.h"
 #include "driver.h"
 #include "Book.h"
+#include "Exceptions.h"
 using namespace std;
 
 int main()
@@ -43,28 +44,6 @@ int main()
 	return 0;
 }
 
-void displayBooks(vector<Book> &books)
-{
-	// set up cout to display currency
-	cout.setf(ios::fixed);
-	cout.setf(ios::showpoint);
-	cout.precision(2);
-
-	// display heading
-	cout << "\nRecommended Reading List\n";
-
-
-	// display each account
-	for (unsigned i = 0; i < books.size(); i++)
-	{
-		Author p = books[i].getAuthor();
-		cout << books[i].getTitle() << '\n';
-		cout << p.getName() << '\n';
-		cout << p.getAddress() << '\n';
-		cout << books[i].getPages() << " pages\n";
-		cout << '$' << books[i].getPrice() << "\n\n\n";
-	}
-}
 
 // This code is provided for you. It creates the test file.
 void createTestFile()
@@ -102,9 +81,62 @@ void createTestFile()
 void readTestFile()
 {
 	// This is code that you must provide
+	char myChar;
+	vector<Book> myBooks;
+	ifstream inStream;
+	openFile(inStream, "bookData.txt");
+	while (inStream.good())
+	{
+		Book b1;
+		try 
+		{
+			b1.readData(inStream);
+		}
+		catch ()
+	}
+	
+	
+
+
 }
 
 void openFile(ifstream& in, const string& _name)
 {
 	// This is code that you must provide
+	try 
+	{
+		in.open(_name);
+	}
+	catch (FileOpenException e)
+	{
+		e.getMessage();
+	}
+	catch (...)
+	{
+		std::cout << "Unknown error";
+	}
+	
+}
+
+void displayBooks(vector<Book> &books)
+{
+	// set up cout to display currency
+	cout.setf(ios::fixed);
+	cout.setf(ios::showpoint);
+	cout.precision(2);
+
+	// display heading
+	cout << "\nRecommended Reading List\n";
+
+
+	// display each account
+	for (unsigned i = 0; i < books.size(); i++)
+	{
+		Author p = books[i].getAuthor();
+		cout << books[i].getTitle() << '\n';
+		cout << p.getName() << '\n';
+		cout << p.getAddress() << '\n';
+		cout << books[i].getPages() << " pages\n";
+		cout << '$' << books[i].getPrice() << "\n\n\n";
+	}
 }

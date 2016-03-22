@@ -32,11 +32,15 @@ double Book::getPrice()
 {
 	return price;
 }
+void Book::readData(std::ifstream& inStream)
+{
+	inStream >> myAuthor.getName() >> myAuthor.getAddress() >> title >> pages >> price;
+}
 void Book::writeData(std::ofstream& outStream)
 {
-	//not working. WHY!!! error no operator << matches the operands
-	outStream << myAuthor << ' ' << title << ' ' << pages << ' ' << price;
+	outStream << myAuthor.getName() << ' ' << myAuthor.getAddress() << title << ' ' << pages << ' ' << price <<std::endl;
 }
+
 Book::~Book()
 {
 }

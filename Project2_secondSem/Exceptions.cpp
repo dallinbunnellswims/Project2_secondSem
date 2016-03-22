@@ -1,12 +1,31 @@
 #include "stdafx.h"
 #include "Exceptions.h"
+#include "including.h"
 
 
-Exceptions::Exceptions()
+FileOpenException::FileOpenException()
 {
 }
 
+std::string FileOpenException::getMessage()
+{
+	return message;
+}
 
-Exceptions::~Exceptions()
+
+FileOpenException::~FileOpenException()
+{
+}
+
+ReadErrorException::ReadErrorException()
+{
+}
+
+std::string ReadErrorException::getMessage()
+{
+	return message;
+}
+
+ReadErrorException::~ReadErrorException()
 {
 }
