@@ -1,31 +1,20 @@
+#pragma once
 #include "stdafx.h"
 #include "Exceptions.h"
 #include "including.h"
 
 
-FileOpenException::FileOpenException()
+ReadException::ReadException()
 {
 }
 
-std::string FileOpenException::getMessage()
-{
-	return message;
-}
-
-
-FileOpenException::~FileOpenException()
-{
-}
-
-ReadErrorException::ReadErrorException()
-{
-}
-
-std::string ReadErrorException::getMessage()
+std::string ReadException::getMessage()
 {
 	return message;
 }
 
-ReadErrorException::~ReadErrorException()
+
+ReadException::~ReadException()
 {
 }
+

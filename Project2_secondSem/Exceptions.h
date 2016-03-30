@@ -1,19 +1,16 @@
 #pragma once
 #include "including.h"
-class FileOpenException
+
+#define END_OF_FILE 1
+#define OPEN_ERROR 2
+#define READ_ERROR 3
+
+
+class ReadException
 {
 public:
-	std::string message = "Couldn't open the file.";
-	FileOpenException();
-	std::string getMessage();
-	~FileOpenException();
+	ReadException();
+	void Exceptions();
+	~ReadException();
 };
 
-class ReadErrorException
-{
-public:
-	std::string message = "Couldn't read the file.";
-	ReadErrorException();
-	std::string getMessage();
-	~ReadErrorException();
-};

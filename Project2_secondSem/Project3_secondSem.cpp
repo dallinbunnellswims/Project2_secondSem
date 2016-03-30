@@ -8,9 +8,10 @@
 #include "including.h"
 #include "driver.h"
 #include "Book.h"
+#include "Author.h"
 #include "Exceptions.h"
 using namespace std;
-
+const string fileName = "bookData.txt";
 int main()
 {
 	// Display Menu 
@@ -70,7 +71,7 @@ void createTestFile()
 	// the file will be in the same folder as the executable file
 	// assume that the file opens
 	ofstream outputFile;
-	outputFile.open("bookData.txt");
+	outputFile.open(fileName);
 
 	for (unsigned i = 0; i < myBooks.size(); ++i)
 	{
@@ -81,23 +82,30 @@ void createTestFile()
 void readTestFile()
 {
 	// This is code that you must provide
-	char myChar;
 	vector<Book> myBooks;
 	ifstream inStream;
-	openFile(inStream, "bookData.txt");
-	while (inStream.good())
+	
+	openFile(inStream, fileName);
+	
+	try
 	{
-		Book b1;
-		try 
-		{
-			b1.readData(inStream);
-		}
-		catch ()
+
+		
+
 	}
-	
+	catch
+	{
+
+	}
+
 	
 
+	Book b1;
+	Book b2;
+	Book b3;
 
+	
+	displayBooks(myBooks);
 }
 
 void openFile(ifstream& in, const string& _name)
@@ -106,19 +114,21 @@ void openFile(ifstream& in, const string& _name)
 	try 
 	{
 		in.open(_name);
+		if (in.fail())
+			throw ReadException();
 	}
-	catch (FileOpenException e)
+	catch (ReadException e)
 	{
 		e.getMessage();
 	}
 	catch (...)
 	{
-		std::cout << "Unknown error";
+		cout << "Unknown error";
 	}
 	
 }
 
-void displayBooks(vector<Book> &books)
+void displayBooks(vector<Book>& books)
 {
 	// set up cout to display currency
 	cout.setf(ios::fixed);

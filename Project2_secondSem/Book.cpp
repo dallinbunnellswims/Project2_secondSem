@@ -1,3 +1,4 @@
+#pragma once
 #include "stdafx.h"
 #include "including.h"
 #include "Book.h"
