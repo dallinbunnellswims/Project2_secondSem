@@ -35,11 +35,11 @@ double Book::getPrice()
 }
 void Book::readData(std::ifstream& inStream)
 {
-	inStream >> myAuthor.getName() >> myAuthor.getAddress() >> title >> pages >> price;
+	
 }
 void Book::writeData(std::ofstream& outStream)
 {
-	outStream << myAuthor.getName() << ' ' << myAuthor.getAddress() << title << ' ' << pages << ' ' << price <<std::endl;
+	outStream << myAuthor.getName() << '\n' << myAuthor.getAddress() << '\n' << title << ' \n' << pages << '\n' << price << '\n';
 }
 
 Book::~Book()

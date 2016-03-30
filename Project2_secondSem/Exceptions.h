@@ -9,8 +9,10 @@
 class ReadException
 {
 public:
+	int errorType;
 	ReadException();
-	void Exceptions();
+	ReadException(int e);
+	void Error();
 	~ReadException();
 };
 

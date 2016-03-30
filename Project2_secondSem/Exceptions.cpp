@@ -8,11 +8,20 @@ ReadException::ReadException()
 {
 }
 
-std::string ReadException::getMessage()
+ReadException::ReadException(int e)
 {
-	return message;
+	errorType = e;
 }
 
+void ReadException::Error()
+{
+	if (errorType == END_OF_FILE)
+		std::cout << "End of File Error." << std::endl;
+	else if (errorType == OPEN_ERROR)
+		std::cout << "Couldn't open the file" << std::endl;
+	else if (errorType == READ_ERROR)
+		std::cout << "Couldn't read the file." << std::endl;
+}
 
 ReadException::~ReadException()
 {

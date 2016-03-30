@@ -84,26 +84,22 @@ void readTestFile()
 	// This is code that you must provide
 	vector<Book> myBooks;
 	ifstream inStream;
+	bool inf = true;
 	
-	openFile(inStream, fileName);
-	
-	try
+	while(inf)
 	{
+		string name;
+		string address; 
+		string title;
+		int pages;
+		double price;
 
 		
+		
+		inStream.getline();
+
 
 	}
-	catch
-	{
-
-	}
-
-	
-
-	Book b1;
-	Book b2;
-	Book b3;
-
 	
 	displayBooks(myBooks);
 }
@@ -115,11 +111,11 @@ void openFile(ifstream& in, const string& _name)
 	{
 		in.open(_name);
 		if (in.fail())
-			throw ReadException();
+			throw ReadException(OPEN_ERROR);
 	}
 	catch (ReadException e)
 	{
-		e.getMessage();
+		e.Error();
 	}
 	catch (...)
 	{
