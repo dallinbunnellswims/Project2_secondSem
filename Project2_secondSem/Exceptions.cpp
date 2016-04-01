@@ -4,16 +4,16 @@
 #include "including.h"
 
 
-ReadException::ReadException()
+Exceptions::Exceptions()
 {
 }
 
-ReadException::ReadException(int e)
+Exceptions::Exceptions(int e)
 {
 	errorType = e;
 }
 
-void ReadException::Error()
+void Exceptions::Error()
 {
 	if (errorType == END_OF_FILE)
 		std::cout << "End of File Error." << std::endl;
@@ -23,7 +23,7 @@ void ReadException::Error()
 		std::cout << "Couldn't read the file." << std::endl;
 }
 
-ReadException::~ReadException()
+Exceptions::~Exceptions()
 {
 }
 

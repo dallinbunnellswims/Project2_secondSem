@@ -6,13 +6,13 @@
 #define READ_ERROR 3
 
 
-class ReadException
+class Exceptions
 {
 public:
 	int errorType;
-	ReadException();
-	ReadException(int e);
+	Exceptions();
+	Exceptions(int e);
 	void Error();
-	~ReadException();
+	~Exceptions();
 };
 

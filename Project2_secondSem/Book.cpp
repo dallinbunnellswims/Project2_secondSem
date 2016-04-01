@@ -39,7 +39,7 @@ void Book::readData(std::ifstream& inStream)
 }
 void Book::writeData(std::ofstream& outStream)
 {
-	outStream << myAuthor.getName() << '\n' << myAuthor.getAddress() << '\n' << title << ' \n' << pages << '\n' << price << '\n';
+	outStream << myAuthor.getName() << std::endl << myAuthor.getAddress() << std::endl << title << std::endl << pages << std::endl << price << std::endl;
 }
 
 Book::~Book()

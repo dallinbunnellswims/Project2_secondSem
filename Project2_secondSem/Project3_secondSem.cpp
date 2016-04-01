@@ -85,23 +85,75 @@ void readTestFile()
 	vector<Book> myBooks;
 	ifstream inStream;
 	bool inf = true;
-	
-	while(inf)
+	const int maxSize = 100;
+	char garbageArray[maxSize];
+
+	try
 	{
-		string name;
-		string address; 
-		string title;
-		int pages;
-		double price;
+		//while (inf)
+		//{
+			string name;
+			string address;
+			string title;
+			int pages;
+			double price;
 
-		
-		
-		inStream.getline();
+			inStream.getline(garbageArray, maxSize);
+			name.append(garbageArray);
+			address.append(garbageArray);
+			title.append(garbageArray);
+			pages = atoi(garbageArray);
+			price = atoi(garbageArray);
 
+			/*if (!inStream.getline(garbageArray, maxSize))
+			{
+				if (inStream.eof())
+					throw Exceptions(END_OF_FILE);
+				else
+					throw Exceptions(READ_ERROR);
+			}
+
+			name.append(garbageArray);
+
+			if (!inStream.getline(garbageArray, maxSize))
+				throw Exceptions(READ_ERROR);
+
+			address.append(garbageArray);
+
+			if (!inStream.getline(garbageArray, maxSize))
+				throw Exceptions(READ_ERROR);
+
+			title.append(garbageArray);
+
+			if (!inStream.getline(garbageArray, maxSize))
+				throw Exceptions(READ_ERROR);
+
+			if (!(pages = atoi(garbageArray)))
+				throw Exceptions(READ_ERROR);
+
+			pages = atoi(garbageArray);
+
+			if (!inStream.getline(garbageArray, maxSize))
+				throw Exceptions(READ_ERROR);
+
+			if (!(price = atoi(garbageArray)))
+				throw Exceptions(READ_ERROR);
+
+			price = atoi(garbageArray);
+
+			*/
+
+		//}
+			std::cout << name << address << title << pages << price;
 
 	}
+	catch (Exceptions e)
+	{
+		e.Error();
+	}
 	
-	displayBooks(myBooks);
+	
+	//displayBooks(myBooks);
 }
 
 void openFile(ifstream& in, const string& _name)
@@ -111,9 +163,9 @@ void openFile(ifstream& in, const string& _name)
 	{
 		in.open(_name);
 		if (in.fail())
-			throw ReadException(OPEN_ERROR);
+			throw Exceptions(OPEN_ERROR);
 	}
-	catch (ReadException e)
+	catch (Exceptions e)
 	{
 		e.Error();
 	}
