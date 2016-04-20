@@ -90,6 +90,36 @@ void readTestFile()
 
 	try
 	{
+		openFile(inStream, fileName);
+		while (inStream)
+		{
+			Book b; //create a book
+			//try again to read teh object, then push it into a vector
+			try
+			{
+				b.readData(inStream);
+				myBooks.push_back(b);
+			}
+			catch (Exceptions e)
+			{
+				e.Error();
+				inStream.close();
+			}
+
+		}
+		inStream.close();
+	}
+
+	catch (Exceptions e)
+	{
+		e.Error();
+		inStream.close();
+	}
+	return;
+
+}
+	/*try
+	{
 		//while (inf)
 		//{
 			string name;
@@ -141,20 +171,15 @@ void readTestFile()
 
 			price = atoi(garbageArray);
 
-			*/
+			
 
 		//}
 			std::cout << name << address << title << pages << price;
-
-	}
-	catch (Exceptions e)
-	{
-		e.Error();
-	}
+			*/
 	
 	
 	//displayBooks(myBooks);
-}
+
 
 void openFile(ifstream& in, const string& _name)
 {
@@ -184,9 +209,11 @@ void displayBooks(vector<Book>& books)
 	cout.precision(2);
 
 	// display heading
-	cout << "\nRecommended Reading List\n";
-
-
+	if (books.size() > 0)
+	{
+		cout << "\nRecommended Reading List\n";
+	}
+	
 	// display each account
 	for (unsigned i = 0; i < books.size(); i++)
 	{
