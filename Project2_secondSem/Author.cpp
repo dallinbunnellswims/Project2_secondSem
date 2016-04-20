@@ -1,6 +1,7 @@
 #include "stdafx.h"
 #include "including.h"
 #include "Author.h"
+#include "Exceptions.h"
 
 
 Author::Author()
@@ -15,9 +16,23 @@ std::string Author::getAddress()
 {
 	return address;
 }
-bool Author::readData(std::ifstream& inStream)
+void Author::readData(std::ifstream& inStream)
 {
-	return false;
+	// read the name and address from the file
+	getline(inStream, name);
+	getline(inStream, address);
+
+	// check the fail bit, if it is set and it is not end of file, throw a read error
+	if (inStream.fail() && !inStream.eof())
+	{
+		throw Exceptions(READ_ERROR);
+	}
+
+	// if it is an end of file, throw an eof error
+	if (inStream.eof())
+	{
+		throw Exceptions(END_OF_FILE);
+	}
 }
 std::string Author::getName()
 {

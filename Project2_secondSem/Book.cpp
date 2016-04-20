@@ -2,6 +2,7 @@
 #include "stdafx.h"
 #include "including.h"
 #include "Book.h"
+#include "Exceptions.h"
 
 
 Book::Book()
@@ -35,11 +36,58 @@ double Book::getPrice()
 }
 void Book::readData(std::ifstream& inStream)
 {
+	getline(inStream, title);
+	if (inStream.fail() && inStream.eof())
+		throw Exceptions(READ_ERROR);
+	else if (inStream.eof())
+		throw Exceptions(END_OF_FILE);
+	else
+	{
+		std::string inputValue;
+		//read pages, throw exception if can't convert
+		getline(inStream, inputValue);
+		try 
+		{
+			pages = stoi(inputValue);
+		}
+		catch (std::invalid_argument e)
+		{
+			throw Exceptions(READ_ERROR);
+		}
+		getline(inStream, inputValue);
+		try
+		{
+			price = stod(inputValue);
+		}
+		catch (std::invalid_argument e)
+		{
+			throw Exceptions(READ_ERROR);
+		}
+
+		try
+		{
+			myAuthor.readData(inStream);
+		}
+		catch (Exceptions e)
+		{
+			throw;
+		}
+		if (inStream.fail() && !inStream.eof())
+		{
+			throw Exceptions(READ_ERROR);
+		}
+		else if (inStream.eof())
+			throw Exceptions(END_OF_FILE);
+	} //end of else clause ... finished reading
 	
 }
 void Book::writeData(std::ofstream& outStream)
 {
-	outStream << myAuthor.getName() << std::endl << myAuthor.getAddress() << std::endl << title << std::endl << pages << std::endl << price << std::endl;
+	outStream << myAuthor.getName() << std::endl;
+	outStream << myAuthor.getAddress() << std::endl;
+	outStream << title << std::endl;
+	outStream << pages << std::endl;
+	outStream << price << std::endl;
 }
 
 Book::~Book()
