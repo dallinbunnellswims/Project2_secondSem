@@ -4,6 +4,7 @@
 #include "Book.h"
 #include "Exceptions.h"
 
+const std::string fileName = "bookData.txt";
 
 Book::Book()
 {
@@ -36,8 +37,9 @@ double Book::getPrice()
 }
 void Book::readData(std::ifstream& inStream)
 {
+	inStream.open(fileName);
 	getline(inStream, title);
-	if (inStream.fail() && inStream.eof())
+	if (inStream.fail() && !inStream.eof())
 		throw Exceptions(READ_ERROR);
 	else if (inStream.eof())
 		throw Exceptions(END_OF_FILE);

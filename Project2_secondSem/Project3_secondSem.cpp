@@ -94,7 +94,7 @@ void readTestFile()
 		while (inStream)
 		{
 			Book b; //create a book
-			//try again to read teh object, then push it into a vector
+			//try again to read the object, then push it into a vector
 			try
 			{
 				b.readData(inStream);
